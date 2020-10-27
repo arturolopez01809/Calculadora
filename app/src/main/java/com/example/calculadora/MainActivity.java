@@ -46,11 +46,10 @@ public class MainActivity extends AppCompatActivity {
                     textView_grande.setText("1");
                     poder_borrar = false;
                 } else if(!poder_borrar) {
-                    textView_grande.setText(textView_grande.getText() + "1");
-                    operando2 = 1;
+                    textView_grande.setText("" + textView_grande.getText() + "1");
                 }
 
-                operando2 = Double.valueOf((String) textView_grande.getText());
+                operando2 = Double.parseDouble("" + textView_grande.getText());
             }
         });
 
@@ -60,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textView_grande.append(".");
+                poder_borrar = false;
             }
         });
 
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     textView_grande.setText(textView_grande.getText() + "2");
                 }
 
-                operando2 = Double.valueOf((String) textView_grande.getText());
+                operando2 = Double.valueOf("" + textView_grande.getText());
             }
         });
 
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     textView_grande.setText(textView_grande.getText() + "3");
                 }
 
-                operando2 = Double.valueOf((String) textView_grande.getText());
+                operando2 = Double.valueOf("" + textView_grande.getText());
             }
         });
 
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     textView_grande.setText(textView_grande.getText() + "4");
                 }
 
-                operando2 = Double.valueOf((String) textView_grande.getText());
+                operando2 = Double.valueOf("" + textView_grande.getText());
             }
         });
 
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     textView_grande.setText(textView_grande.getText() + "5");
                 }
 
-                operando2 = Double.valueOf((String) textView_grande.getText());
+                operando2 = Double.valueOf("" + textView_grande.getText());
             }
         });
 
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                     textView_grande.setText(textView_grande.getText() + "6");
                 }
 
-                operando2 = Double.valueOf((String) textView_grande.getText());
+                operando2 = Double.valueOf("" + textView_grande.getText());
             }
         });
 
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                     textView_grande.setText(textView_grande.getText() + "7");
                 }
 
-                operando2 = Double.valueOf((String) textView_grande.getText());
+                operando2 = Double.valueOf("" + textView_grande.getText());
             }
         });
 
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     textView_grande.setText(textView_grande.getText() + "8");
                 }
 
-                operando2 = Double.valueOf((String) textView_grande.getText());
+                operando2 = Double.valueOf("" + textView_grande.getText());
             }
         });
 
@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                     textView_grande.setText(textView_grande.getText() + "9");
                 }
 
-                operando2 = Double.valueOf((String) textView_grande.getText());
+                operando2 = Double.valueOf("" + textView_grande.getText());
 
 
             }
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
                     textView_grande.setText(textView_grande.getText() + "0");
                 }
 
-                operando2 = Double.valueOf((String) textView_grande.getText());
+                operando2 = Double.valueOf("" + textView_grande.getText());
             }
         });
 
@@ -221,7 +221,10 @@ public class MainActivity extends AppCompatActivity {
                     operando2*=-1;
                 }
 
-                textView_grande.setText(String.valueOf(operando2));
+                String cadena_resultado = mostrarNumero(operando2);
+
+                textView_grande.setText(cadena_resultado);
+
 
                 poder_borrar = true;
             }
@@ -240,7 +243,9 @@ public class MainActivity extends AppCompatActivity {
 
                     RealizarOperacion();
 
-                    textView_enano.setText(String.valueOf(res));
+                    String cadena_resultado = mostrarNumero(res);
+
+                    textView_enano.setText(cadena_resultado);
 
                     poder_borrar = true;
                     operador = "+";
@@ -262,7 +267,9 @@ public class MainActivity extends AppCompatActivity {
 
                     RealizarOperacion();
 
-                    textView_enano.setText(String.valueOf(res));
+                    String cadena_resultado = mostrarNumero(res);
+
+                    textView_enano.setText(cadena_resultado);
 
                     poder_borrar = true;
                     operador = "/";
@@ -283,7 +290,9 @@ public class MainActivity extends AppCompatActivity {
 
                     RealizarOperacion();
 
-                    textView_enano.setText(String.valueOf(res));
+                    String cadena_resultado = mostrarNumero(res);
+
+                    textView_enano.setText(cadena_resultado);
 
                     poder_borrar = true;
                     operador = "%";
@@ -321,7 +330,9 @@ public class MainActivity extends AppCompatActivity {
 
                     RealizarOperacion();
 
-                    textView_grande.setText(String.valueOf(res));
+                    String cadena_resultado = mostrarNumero(res);
+
+                    textView_enano.setText(cadena_resultado);
 
                     poder_borrar = true;
                     operador = "-";
@@ -342,7 +353,9 @@ public class MainActivity extends AppCompatActivity {
 
                 //textView_enano.setText(String.valueOf(res));
 
-                textView_enano.setText(String.valueOf(res));
+                String cadena_resultado = mostrarNumero(res);
+
+                textView_enano.setText(cadena_resultado);
 
                 poder_borrar = true;
                 operando1 = 0.0;
@@ -388,6 +401,13 @@ public class MainActivity extends AppCompatActivity {
 
     public double Producto(double a){
         return a/100;
+    }
+
+    public static String mostrarNumero(double d) {
+        if(d == (long) d)
+            return String.format("%d",(long)d);
+        else
+            return String.format("%s",d);
     }
 
     @Override
